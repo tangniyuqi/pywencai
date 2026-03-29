@@ -1,0 +1,41 @@
+[tool.pdm.dev-dependencies]
+dev = [
+    "notebook<7.0.0,>=6.4.12",
+    "mypy<2.0.0,>=1.2.0",
+    "autopep8<3.0.0,>=2.0.2",
+    "types-requests<3.0.0.0,>=2.30.0.0",
+]
+
+[[tool.pdm.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+verify_ssl = true
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+authors = [
+    {name = "pluto", email = "mayuanchi1029@gmail.com"},
+]
+requires-python = "<4.0,>=3.8"
+dependencies = [
+    "requests",
+    "pandas>=1.5.0",
+    "fake-useragent<2.0.0,>=1.1.1",
+    "pydash<8.0.0,>=7.0.3",
+    "ipykernel>=6.29.5",
+]
+name = "pywencai"
+version = "0.14.0"
+description = "获取同花顺问财数据 - 纯Python实现，无需Node.js"
+readme = "README.md"
+
+[dependency-groups]
+dev = [
+    "notebook<7.0.0,>=6.4.12",
+    "mypy<2.0.0,>=1.2.0",
+    "autopep8<3.0.0,>=2.0.2",
+    "types-requests<3.0.0.0,>=2.30.0.0",
+]
