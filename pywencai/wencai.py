@@ -2,7 +2,7 @@ import json
 from typing import List
 import math
 
-import requests as rq
+import httpx
 import pandas as pd
 import time
 import logging
@@ -58,16 +58,17 @@ def get_robot_data(**kwargs):
     log and logger.info(f'获取condition开始')
 
     def do():
-        res = rq.request(
-            method='POST',
-            url='http://www.iwencai.com/customized/chart/get-robot-data',
-            json=data,
-            headers=headers(cookie, user_agent),
-            **request_params
-        )
-        params = convert(res)
-        log and logger.info(f'获取get_robot_data成功')
-        return params
+        with httpx.Client() as client:
+            res = client.request(
+                method='POST',
+                url='http://www.iwencai.com/customized/chart/get-robot-data',
+                json=data,
+                headers=headers(cookie, user_agent),
+                **request_params
+            )
+            params = convert(res)
+            log and logger.info(f'获取get_robot_data成功')
+            return params
 
     result = while_do(do, retry, sleep, log)
 
@@ -127,22 +128,23 @@ def get_page(url_params, **kwargs):
     log and logger.info(f'第{data.get("page")}页开始')
 
     def do():
-        res = rq.request(
-            method='POST',
-            url=target_url,
-            data=data,
-            headers=headers(cookie, user_agent),
-            timeout=(5, 10),
-            **request_params
-        )
-        result_do = json.loads(res.text)
-        data_list = _.get(result_do, path)
+        with httpx.Client() as client:
+            res = client.request(
+                method='POST',
+                url=target_url,
+                data=data,
+                headers=headers(cookie, user_agent),
+                timeout=(5, 10),
+                **request_params
+            )
+            result_do = json.loads(res.text)
+            data_list = _.get(result_do, path)
 
-        if len(data_list) == 0:
-            log and logger.error(f'第{data.get("page")}页返回空！')
-            raise Exception("data_list is empty!")
-        log and logger.info(f'第{data.get("page")}页成功')
-        return pd.DataFrame.from_dict(data_list)
+            if len(data_list) == 0:
+                log and logger.error(f'第{data.get("page")}页返回空！')
+                raise Exception("data_list is empty!")
+            log and logger.info(f'第{data.get("page")}页成功')
+            return pd.DataFrame.from_dict(data_list)
     
     result = while_do(do, retry, sleep, log)
 

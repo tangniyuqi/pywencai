@@ -1,5 +1,4 @@
-from .hexin_v_pure import get_token
-
+from .hexin_v import get_token
 
 def headers(cookie=None, user_agent=None):
     '''生成请求头'''

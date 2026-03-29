@@ -1,13 +1,11 @@
 """
-纯 Python 实现的 hexin-v token 生成器
-替代原来依赖 Node.js 的实现
+Python 实现的 hexin-v token 生成器
 """
 import time
 import random
 import hashlib
 import base64
 from typing import List
-
 
 class TokenGenerator:
     """Token 生成器"""

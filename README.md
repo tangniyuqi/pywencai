@@ -1,7 +1,7 @@
-[![PyPI version](https://badge.fury.io/py/pywencai.svg)](https://badge.fury.io/py/pywencai)
-[![Downloads](https://static.pepy.tech/badge/pywencai/month)](https://pepy.tech/project/pywencai)
+[![PyPI version](https://badge.fury.io/py/pywencaix.svg)](https://badge.fury.io/py/pywencaix)
+[![Downloads](https://static.pepy.tech/badge/pywencaix/month)](https://pepy.tech/project/pywencaix)
 
-# pywencai
+# pywencaix
 
 获取同花顺问财数据
 
@@ -9,7 +9,7 @@
 
 ## 声明
 
-1. pywencai为开源社区开发，并非同花顺官方提供的工具。
+1. pywencaix为开源社区开发，并非同花顺官方提供的工具。
 2. 该工具只是效率工具，为了便于通过python获取问财数据，用于量化研究和学习，其原理，与登录网页获取数据方式一致。
 3. 建议低频使用，反对高频调用，高频调用会被问财屏蔽，请自行评估技术和法律风险。
 4. 项目代码遵循MIT开源协议，但不赞成商用，商用请自行评估法律风险。
@@ -18,7 +18,7 @@
 ## 安装
 
 ```
-pip install pywencai
+pip install pywencaix
 ```
 > 由于问财接口策略经常发生变化，请安装最新版本使用，遇到问题时，优先尝试升级解决
 
@@ -29,9 +29,9 @@ pip install pywencai
 # Demo
 
 ```python
-import pywencai
+import pywencaix
 
-res = pywencai.get(query='退市股票', sort_key='退市@退市日期', sort_order='asc', cookie='xxx')
+res = pywencaix.get(query='退市股票', sort_key='退市@退市日期', sort_order='asc', cookie='xxx')
 print(res)
 ```
 
@@ -115,7 +115,7 @@ print(res)
 **必填**，默认为None
 
 ```python
-pywencai.get(question='近3个月每日市盈率', pro=True, cookie='xxxx')
+pywencaix.get(question='近3个月每日市盈率', pro=True, cookie='xxxx')
 ```
 cookie获取方法，复制请求头中的Cookie字段值
 
@@ -127,7 +127,7 @@ cookie获取方法，复制请求头中的Cookie字段值
 非必填，默认为`{}`，可以设置额外的request参数
 
 ```python
-pywencai.get(query='昨日涨幅', sort_order='asc', loop=True, log=True, request_params={ 'proxies': proxies })
+pywencaix.get(query='昨日涨幅', sort_order='asc', loop=True, log=True, request_params={ 'proxies': proxies })
 ```
 > 具体参数参看：[https://requests.readthedocs.io/en/latest/api/#requests.request](https://requests.readthedocs.io/en/latest/api/#requests.request)
 

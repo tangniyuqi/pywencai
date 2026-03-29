@@ -3,7 +3,7 @@
 ## 完成的工作
 
 ### 1. 核心实现
-- ✅ 创建 `hexin_v_pure.py`：纯 Python 实现的 token 生成器
+- ✅ 创建 `hexin_v.py`：纯 Python 实现的 token 生成器
 - ✅ 修改 `headers.py`：使用新的纯 Python 实现
 - ✅ 保持 API 完全兼容
 

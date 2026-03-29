@@ -1,18 +1,19 @@
 import pandas as pd
 import json
 import pydash as _
-import requests as rq
+import httpx
 from urllib.parse import urlparse, parse_qs
 from .headers import headers
 
 def get_url(url):
-    res = rq.request(
-        method='GET',
-        url=f'http://www.iwencai.com{url}',
-        headers=headers()
-    )
-    result = json.loads(res.text)
-    return result.get('data')
+    with httpx.Client() as client:
+        res = client.request(
+            method='GET',
+            url=f'http://www.iwencai.com{url}',
+            headers=headers()
+        )
+        result = json.loads(res.text)
+        return result.get('data')
 
 def xuangu_tableV1_handler(comp, comps):
     '''xuangu_tableV1类型'''
@@ -112,9 +113,6 @@ def nestedblocks_handler(comp, comps):
         if sub_comp is not None:
             result.append(show_type_handler(sub_comp, comps))
     return result
-
-
-
 
 show_type_handler_dict = {
     'container': container_handler,
