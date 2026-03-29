@@ -3,7 +3,6 @@ dev = [
     "notebook<7.0.0,>=6.4.12",
     "mypy<2.0.0,>=1.2.0",
     "autopep8<3.0.0,>=2.0.2",
-    "types-requests<3.0.0.0,>=2.30.0.0",
 ]
 
 [[tool.pdm.source]]
@@ -17,7 +16,7 @@ build-backend = "pdm.backend"
 
 [project]
 authors = [
-    {name = "pluto", email = "tangniyuqi@gmail.com"},
+    {name = "tangniyuqi", email = "tangniyuqi@gmail.com"},
 ]
 requires-python = "<4.0,>=3.8"
 dependencies = [
@@ -37,5 +36,4 @@ dev = [
     "notebook<7.0.0,>=6.4.12",
     "mypy<2.0.0,>=1.2.0",
     "autopep8<3.0.0,>=2.0.2",
-    "types-requests<3.0.0.0,>=2.30.0.0",
 ]
